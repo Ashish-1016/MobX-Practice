@@ -8,6 +8,7 @@ function ItemCard({cartStore}){
     function handleRemoveItem(e:React.FormEvent,id:number){
         e.preventDefault()
         removeItem(id)
+        console.log(itemsList)
     }
 
     return (

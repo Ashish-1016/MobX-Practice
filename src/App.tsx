@@ -1,23 +1,18 @@
 
 import './App.css'
-import {ShoppingCart} from "./store/ShoppingCartStore.ts";
-import ShoppingCartInput from "./components/ShoppingCartInput.tsx";
-import ItemCard from "./components/ItemCard.tsx";
-
-function App() {
+import {RouterContext, RouterView} from "mobx-state-router";
+import {viewMap} from "./viewMap.tsx";
+import {initRouter} from "./initRouter.ts";
 
 
-    const shoppingCartStore = new ShoppingCart()
+function App(){
+
+    const routerStore= initRouter()
 
   return (
-    <>
-      <h1>MobX Practice</h1>
-        <div>
-            <h1>Shopping Cart Store:</h1>
-            <ShoppingCartInput cartStore={shoppingCartStore} />
-            <ItemCard cartStore={shoppingCartStore} />
-        </div>
-    </>
+   <RouterContext.Provider value={routerStore}>
+       <RouterView viewMap={viewMap} />
+   </RouterContext.Provider>
   )
 }
 
